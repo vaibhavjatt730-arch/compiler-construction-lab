@@ -1,0 +1,43 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+struct Node {
+    char data;
+    struct Node *left;
+    struct Node *right;
+};
+
+struct Node* createNode(char data) {
+    struct Node* node = malloc(sizeof(struct Node));
+
+    if (node == NULL) {
+        printf("Memory allocation failed.\n");
+        exit(1);
+    }
+
+    node->data = data;
+    node->left = NULL;
+    node->right = NULL;
+
+    return node;
+}
+
+int main() {
+    struct Node* root = createNode('+');
+
+    root->left = createNode('a');
+    root->right = createNode('b');
+
+    printf("Parse Tree for a + b:\n");
+    printf("    %c\n", root->data);
+    printf("   / \\\n");
+    printf("  %c   %c\n",
+           root->left->data,
+           root->right->data);
+
+    free(root->left);
+    free(root->right);
+    free(root);
+
+    return 0;
+}
