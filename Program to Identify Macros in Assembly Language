@@ -1,0 +1,17 @@
+#include <stdio.h>
+#include <string.h>
+
+int main() {
+    char code[200];
+
+    printf("Enter assembly code: ");
+    fgets(code, sizeof(code), stdin);
+
+    if (strstr(code, "MACRO") != NULL) {
+        printf("Macro definition identified.\n");
+    } else {
+        printf("No macro definition found.\n");
+    }
+
+    return 0;
+}
