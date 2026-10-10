@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <ctype.h>
+
+int main() {
+    char code[200];
+    int i;
+
+    printf("Enter a line of C code: ");
+    fgets(code, sizeof(code), stdin);
+
+    printf("Special symbols: ");
+
+    for (i = 0; code[i] != '\0'; i++) {
+        if (!isalnum((unsigned char)code[i]) &&
+            !isspace((unsigned char)code[i]) &&
+            code[i] != '_') {
+            printf("%c ", code[i]);
+        }
+    }
+
+    printf("\n");
+    return 0;
+}
